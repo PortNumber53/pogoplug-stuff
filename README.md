@@ -25,3 +25,5 @@ Customize the variables *node* and *hash* to uniquely identity your pogo.
 Then you can run (from the command line, or a crond entry)
 
 ./pogoplug-stuff/poke_monitor.sh
+
+Now you need to make a PHP script to receive the poke, and then present the information on a dashboard (sample: http://portnumber53.com/monitor/)
