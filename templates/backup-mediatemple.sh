@@ -30,8 +30,8 @@ else
 		mkdir -p $TODAY_FOLDER/domains
 	fi
 
-	rsync --bwlimit=$DOWNLOAD_SPEED --force --no-p --progress --delete-before -laze ssh $project:~/../../data/ $TODAY_FOLDER/data
-	rsync --bwlimit=$DOWNLOAD_SPEED --force --no-p --progress --delete-before -laze ssh $project:~/../../domains/ $TODAY_FOLDER/domains
+	rsync --bwlimit=$DOWNLOAD_SPEED --force --no-p --progress --delete-before -laze ssh $project:~/../../data/ $TODAY_FOLDER/data 1> /tmp/$project.log 2>&1
+	rsync --bwlimit=$DOWNLOAD_SPEED --force --no-p --progress --delete-before -laze ssh $project:~/../../domains/ $TODAY_FOLDER/domains 1> /tmp/$project.log 2>&1
 
 	rm $pid
 fi
