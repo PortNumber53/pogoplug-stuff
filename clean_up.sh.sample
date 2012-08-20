@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#Number of backup folders to keep
+days=15
+#Filter to identify the folders to delete
+filter=/home/backup/20*
+#Minimum folders to keep
+MINDIRS=45
+
+
+
+
+############STOP EDITING HERE
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source $DIR/templates/clean_up_backup.sh 1> /tmp/clean.log 2>&1
