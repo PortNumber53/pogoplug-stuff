@@ -27,3 +27,15 @@ Then you can run (from the command line, or a crond entry)
 ./pogoplug-stuff/poke_monitor.sh
 
 Now you need to make a PHP script to receive the poke, and then present the information on a dashboard (sample: http://portnumber53.com/monitor/)
+
+
+Dependencies:
+-------------
+
+If you want to use the SSH reverse tunnel you need to install jshon.sh
+
+http://kmkeen.com/jshon/
+
+for ArchLinux:
+
+pacman -S jshon
