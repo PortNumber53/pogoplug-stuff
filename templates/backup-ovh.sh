@@ -24,7 +24,7 @@ else
 		cp -alv $YESTERDAY_FOLDER/. $TODAY_FOLDER
 	fi
 
-	rsync --bwlimit=$DOWNLOAD_SPEED --force --no-p --progress --delete-before -laze ssh $project:~/ $TODAY_FOLDER
+	rsync --bwlimit=$DOWNLOAD_SPEED --force --no-p --progress --delete-before -laze ssh $project:~/ $TODAY_FOLDER 1> /tmp/$project.log 2>&1
 
 	rm $pid
 fi
