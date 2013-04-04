@@ -8,9 +8,9 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $DIR/../custom/backup-variables.sh
 
-pid=/tmp/$project.pid
-TODAY_FOLDER=$backup_folder/`date +%Y-%m-%d --date "0 day ago"`/$project
-YESTERDAY_FOLDER=$backup_folder/`date +%Y-%m-%d --date "1 day ago"`/$project
+pid=/tmp/$PROJECT.pid
+TODAY_FOLDER=$backup_folder/`date +%Y-%m-%d --date "0 day ago"`/$PROJECT
+YESTERDAY_FOLDER=$backup_folder/`date +%Y-%m-%d --date "1 day ago"`/$PROJECT
 
 if [ -e $pid ]
 then
@@ -25,7 +25,7 @@ else
 	fi
 
 	cd $TODAY_FOLDER
-	wget --output-file=/tmp/$project.log --tries=3 --passive-ftp --mirror --ftp-user=$user --ftp-password=$password ftp://$server
+	wget --output-file=/tmp/$PROJECT.log --tries=3 --passive-ftp --mirror --ftp-user=$user --ftp-password=$password ftp://$server
 
 	rm $pid
 fi

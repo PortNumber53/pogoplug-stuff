@@ -8,13 +8,13 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $DIR/../custom/backup-variables.sh
 
-pid=/tmp/$project.pid
-TODAY_FOLDER=$backup_folder/`date +%Y-%m-%d --date "0 day ago"`/$project
-YESTERDAY_FOLDER=$backup_folder/`date +%Y-%m-%d --date "1 day ago"`/$project
+pid=/tmp/$PROJECT.pid
+TODAY_FOLDER=$backup_folder/`date +%Y-%m-%d --date "0 day ago"`/$PROJECT
+YESTERDAY_FOLDER=$backup_folder/`date +%Y-%m-%d --date "1 day ago"`/$PROJECT
 
 if [ -e $pid ]
 then
-	echo "$project Still running..."
+	echo "$PROJECT Still running..."
 else
 	touch $pid
 
@@ -30,8 +30,8 @@ else
 		mkdir -p $TODAY_FOLDER/domains
 	fi
 
-	rsync --bwlimit=$DOWNLOAD_SPEED --force --no-p --progress --delete-before --exclude=tmp/sess_ --laze ssh $project:~/../../data/ $TODAY_FOLDER/data 1> /tmp/$project.log 2>&1
-	rsync --bwlimit=$DOWNLOAD_SPEED --force --no-p --progress --delete-before -laze ssh $project:~/../../domains/ $TODAY_FOLDER/domains 1> /tmp/$project.log 2>&1
+	rsync --bwlimit=$DOWNLOAD_SPEED --force --no-p --progress --delete-before --exclude=tmp/sess_ --laze ssh $PROJECT:~/../../data/ $TODAY_FOLDER/data 1> /tmp/$PROJECT.log 2>&1
+	rsync --bwlimit=$DOWNLOAD_SPEED --force --no-p --progress --delete-before -laze ssh $PROJECT:~/../../domains/ $TODAY_FOLDER/domains 1> /tmp/$PROJECT.log 2>&1
 
 	rm $pid
 fi

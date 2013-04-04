@@ -8,13 +8,13 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $DIR/../custom/backup-variables.sh
 
-pid=/tmp/$project.pid
-TODAY_FOLDER=$backup_folder/`date +%Y-%m-%d --date "0 day ago"`/$project
-YESTERDAY_FOLDER=$backup_folder/`date +%Y-%m-%d --date "1 day ago"`/$project
+pid=/tmp/$PROJECT.pid
+TODAY_FOLDER=$backup_folder/`date +%Y-%m-%d --date "0 day ago"`/$PROJECT
+YESTERDAY_FOLDER=$backup_folder/`date +%Y-%m-%d --date "1 day ago"`/$PROJECT
 
 if [ -e $pid ]
 then
-	echo "$project Still running..."
+	echo "$PROJECT Still running..."
 else
 	touch $pid
 
@@ -24,7 +24,7 @@ else
 		cp -alv $YESTERDAY_FOLDER/. $TODAY_FOLDER
 	fi
 
-	rsync --bwlimit=$DOWNLOAD_SPEED --force --no-p --progress --delete-before -laze ssh $project:~/ $TODAY_FOLDER 1> /tmp/$project.log 2>&1
+	rsync --bwlimit=$DOWNLOAD_SPEED --force --no-p --progress --delete-before -laze ssh $PROJECT:~/ $TODAY_FOLDER 1> /tmp/$PROJECT.log 2>&1
 
 	rm $pid
 fi
