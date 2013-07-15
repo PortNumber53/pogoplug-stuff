@@ -9,7 +9,7 @@
 set -e
 
 (
-  # Wait for lock on /var/lock/.myscript.exclusivelock (fd 200) for 10 seconds
+  # Wait for lock on /tmp/.$PROJECTexclusivelock (fd 200) for 10 seconds
   flock -x -w 10 200
 
 
@@ -34,5 +34,5 @@ set -e
   rsync --bwlimit=$DOWNLOAD_SPEED --force --no-p --progress --delete-before --exclude=tmp/sess_ -laze ssh $PROJECT:~/../../data/ $TODAY_FOLDER/data 1> /tmp/$PROJECT.log 2>&1
   rsync --bwlimit=$DOWNLOAD_SPEED --force --no-p --progress --delete-before -laze ssh $PROJECT:~/../../domains/ $TODAY_FOLDER/domains 1> /tmp/$PROJECT.log 2>&1
 
-) 200>/var/lock/.$PROJECT.exclusivelock
+) 200>/tmp/.$PROJECT.exclusivelock
 
