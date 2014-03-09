@@ -25,7 +25,7 @@ else
 	fi
 
 	cd $TODAY_FOLDER
-	wget --output-file=/tmp/$PROJECT.log --tries=3 --passive-ftp --mirror --ftp-user=$user --ftp-password=$password ftp://$server
+	wget --output-file=/tmp/$PROJECT.log --tries=3 --passive-ftp --mirror --ftp-user=$USER --ftp-password=$PASSWORD ftp://$SERVER
 
 	rm $pid
 fi
