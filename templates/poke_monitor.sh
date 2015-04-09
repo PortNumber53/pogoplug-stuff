@@ -1,7 +1,7 @@
 #!/bin/bash
 
 internal_ip=`hostname -I|sed -e 's/  *$//'`
-node_data="\{internal_ip:$internal_ip\}"
+node_data="\{internal_ip:\"$internal_ip\"\}"
 
 curl --header "node:$NODE" \
      --header "hash:$HASH" \
