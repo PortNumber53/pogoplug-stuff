@@ -1,6 +1,6 @@
 #!/bin/bash
 
-internal_ip=`hostname -i|sed -e 's/  *$//'`
+internal_ip=`ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'`
 node_data="\{\"internal_ip\":\"$internal_ip\"\}"
 
 curl --header "node:$NODE" \
